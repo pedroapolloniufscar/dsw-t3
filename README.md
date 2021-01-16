@@ -1,6 +1,6 @@
-# dsw-t3
+# DSW-T3
 
-<H1> Requisitos do Projete </h1>
+<b> Requisitos do Projeto </b>
 
 1 - CRUD de Sites de vendas 
 2 - CRUD de Teatros
