@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<section class="layout-content" layout:fragment="corpo">
+
+		<nav class="navbar navbar-expand-md bg-light">
+			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><i class="oi oi-caret-right"></i>
+						<span>Cadastrar Promoções</span></li>
+				</ul>
+				<a class="btn btn-primary btn-md" th:href="@{/editoras/listar}"
+					role="button"> <span class="oi oi-spreadsheet" title="Listar"
+					aria-hidden="true"></span> <span>Listar Promoções</span>
+				</a>
+			</div>
+		</nav>
+
+		<div class="container" id="cadastro">
+
+			<div th:replace="fragments/alert"></div>
+
+			<form
+				th:action="promo.id == null} ? @{/promo/salvar} : @{/promo/editar}"
+				th:object="${promo}" method="POST">
+				
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="nomePeca">Nome da Peça</label> 
+						<input type="text" class="form-control" id="nome" placeholder="Nome"
+							autofocus="autofocus" th:field="*{nomePeca}"
+							th:classappend="${#fields.hasErrors('nomePeca')} ? is-invalid" />
+
+						<div class="invalid-feedback">
+							<span th:errors="*{nomePeca}"></span>
+						</div>
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="preco">Preço</label> 
+						<input type="text" class="form-control" id="preco" 
+							autofocus="autofocus" th:field="*{preco}"
+							th:classappend="${#fields.hasErrors('preco')} ? is-invalid"  />
+												                             
+						<div class="invalid-feedback">
+							<span th:errors="*{preco}"></span>
+						</div>
+					</div>
+				</div>
+				
+						<div class="form-group col-md-6">
+						<label for="sitedevenda">Site de Venda</label> 
+						<input type="text" class="form-control" id="sitedevenda" 
+							autofocus="autofocus" th:field="*{sitedevenda}"
+							th:classappend="${#fields.hasErrors('sitedevenda')} ? is-invalid" />				
+						                               
+						<div class="invalid-feedback">
+							<span th:errors="*{sitedevenda}"></span>
+						</div>
+					</div>
+				</div>
+
+				<input type="hidden" id="id" th:field="*{id}" />
+				<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+			</form>
+		</div>
+	</section>
+</body>
+</html>
